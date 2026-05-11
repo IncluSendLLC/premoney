@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -12,7 +12,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
 import { Plus, RotateCcw } from "lucide-react";
 import { useSimulatorStore } from "@/lib/store/simulator-store";
 import { RoundCard } from "@/components/rounds/round-card";
@@ -59,10 +58,16 @@ export default function RoundsPage() {
   );
 
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className="max-w-4xl space-y-8">
+      {/* Page header */}
       <div>
-        <h1 className="text-2xl font-bold">Funding Rounds</h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="serif-lead mb-2">
+          <em>the structure of</em>
+        </p>
+        <h1 className="caps-label" style={{ fontSize: "12px", marginBottom: "8px" }}>
+          Funding Rounds
+        </h1>
+        <p style={{ fontSize: "14px", color: "var(--ink-60)", lineHeight: 1.55 }}>
           Configure your company and add funding rounds to simulate the cap
           table and exit outcomes.
         </p>
@@ -70,14 +75,14 @@ export default function RoundsPage() {
 
       {/* Company Setup */}
       <Card>
-        <CardHeader className="pb-3">
-          <CardTitle className="text-base">Company Setup</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent style={{ padding: "26px" }}>
+          <h3 className="caps-label-sm mb-5" style={{ color: "var(--navy-500)" }}>
+            Company Setup
+          </h3>
           <div className="flex items-end gap-4">
             <div className="space-y-2 flex-1">
-              <Label htmlFor="founderShares" className="flex items-center">
-                Founder Shares at Inception
+              <Label htmlFor="founderShares" className="flex items-center" style={{ fontSize: "13px" }}>
+                Founder shares at inception
                 <InfoTooltip
                   term="Fully Diluted"
                   definition="The initial number of common shares issued to founders. A typical number is 10,000,000 shares, which makes the math cleaner for future rounds."
@@ -86,6 +91,7 @@ export default function RoundsPage() {
               <Input
                 id="founderShares"
                 type="text"
+                className="nums"
                 value={formatShares(founderShares)}
                 onChange={(e) => {
                   const val = parseInt(e.target.value.replace(/,/g, ""), 10);
@@ -95,7 +101,7 @@ export default function RoundsPage() {
             </div>
 
             <div className="space-y-2">
-              <Label>Load Preset</Label>
+              <Label style={{ fontSize: "13px" }}>Load preset</Label>
               <Select onValueChange={(v) => v && loadPreset(v as "seed" | "seriesA" | "seriesB")}>
                 <SelectTrigger className="w-48">
                   <SelectValue placeholder="Choose preset..." />
@@ -103,39 +109,35 @@ export default function RoundsPage() {
                 <SelectContent>
                   <SelectItem value="seed">Seed Round</SelectItem>
                   <SelectItem value="seriesA">Seed + Series A</SelectItem>
-                  <SelectItem value="seriesB">
-                    Seed + A + B
-                  </SelectItem>
+                  <SelectItem value="seriesB">Seed + A + B</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <Button variant="outline" size="icon" onClick={resetAll} title="Reset all">
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw style={{ width: "14px", height: "14px" }} />
             </Button>
           </div>
         </CardContent>
       </Card>
 
-      <Separator />
-
       {/* Round List */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">
+          <h2 className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
             Rounds ({rounds.length})
           </h2>
           <Button onClick={handleAddRound} size="sm">
-            <Plus className="h-4 w-4 mr-1" />
+            <Plus style={{ width: "14px", height: "14px", marginRight: "4px" }} />
             Add Round
           </Button>
         </div>
 
         {rounds.length === 0 ? (
           <Card>
-            <CardContent className="py-12 text-center text-muted-foreground">
+            <CardContent className="py-12 text-center" style={{ color: "var(--ink-40)" }}>
               <p className="mb-2">No funding rounds configured yet.</p>
-              <p className="text-sm">
+              <p style={{ fontSize: "13px" }}>
                 Add a round or load a preset to get started.
               </p>
             </CardContent>

@@ -15,25 +15,21 @@ const navItems = [
     label: "Rounds",
     href: "/simulator/rounds",
     icon: Layers,
-    description: "Configure funding rounds",
   },
   {
     label: "Cap Table",
     href: "/simulator/cap-table",
     icon: PieChart,
-    description: "View ownership breakdown",
   },
   {
     label: "Waterfall",
     href: "/simulator/waterfall",
     icon: ArrowDownToLine,
-    description: "Simulate exit outcomes",
   },
   {
     label: "Compare",
     href: "/simulator/compare",
     icon: GitCompare,
-    description: "Compare scenarios",
   },
 ];
 
@@ -41,7 +37,14 @@ export function SimulatorNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-col gap-1 p-4 w-56 border-r min-h-[calc(100vh-3.5rem)]">
+    <nav
+      className="flex flex-col gap-1 w-52 min-h-[calc(100vh-3.5rem)]"
+      style={{
+        background: "var(--paper)",
+        borderRight: "1px solid var(--ink-10)",
+        padding: "20px 12px",
+      }}
+    >
       {navItems.map((item) => {
         const isActive = pathname === item.href;
         return (
@@ -49,26 +52,37 @@ export function SimulatorNav() {
             key={item.href}
             href={item.href}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors",
-              isActive
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              "flex items-center gap-3 px-4 py-2.5 transition-all",
+              isActive ? "" : ""
             )}
+            style={{
+              borderRadius: "var(--r-pill)",
+              fontWeight: 500,
+              fontSize: "12.5px",
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+              color: isActive ? "var(--cream)" : "var(--ink-60)",
+              background: isActive ? "var(--navy-900)" : "transparent",
+              transition: "all 160ms var(--ease)",
+            }}
+            onMouseOver={(e) => {
+              if (!isActive) {
+                e.currentTarget.style.background = "var(--cream-2)";
+                e.currentTarget.style.color = "var(--navy-900)";
+              }
+            }}
+            onMouseOut={(e) => {
+              if (!isActive) {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "var(--ink-60)";
+              }
+            }}
           >
-            <item.icon className="h-4 w-4 flex-shrink-0" />
-            <div>
-              <div className="font-medium">{item.label}</div>
-              <div
-                className={cn(
-                  "text-xs",
-                  isActive
-                    ? "text-primary-foreground/70"
-                    : "text-muted-foreground"
-                )}
-              >
-                {item.description}
-              </div>
-            </div>
+            <item.icon
+              className="flex-shrink-0"
+              style={{ width: "14px", height: "14px" }}
+            />
+            {item.label}
           </Link>
         );
       })}

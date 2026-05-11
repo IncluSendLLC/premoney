@@ -54,7 +54,8 @@ export default function WaterfallPage() {
   if (rounds.length === 0) {
     return (
       <div className="max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2">Exit Waterfall</h1>
+        <p className="serif-lead">How the pie gets sliced</p>
+        <h1 className="caps-label mt-1 mb-2">Exit Waterfall</h1>
         <Card>
           <CardContent className="py-12 text-center text-muted-foreground">
             <p className="mb-2">No funding rounds configured yet.</p>
@@ -76,20 +77,21 @@ export default function WaterfallPage() {
 
   return (
     <div className="max-w-6xl space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">Exit Waterfall</h1>
-        <p className="text-muted-foreground mt-1">
+      <header>
+        <p className="serif-lead">How the pie gets sliced</p>
+        <h1 className="caps-label mt-1">Exit Waterfall</h1>
+        <p className="mt-2" style={{ color: "var(--ink-60)" }}>
           See how exit proceeds are distributed among founders, investors, and
           employees based on liquidation preferences and conversion rights.
         </p>
-      </div>
+      </header>
 
       {/* Exit Value Control */}
       <Card>
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label className="text-base font-medium flex items-center">
+              <Label className="caps-label-sm flex items-center" style={{ color: "var(--navy-500)" }}>
                 Exit Value
                 <InfoTooltip
                   term="Liquidation Preference"
@@ -102,7 +104,7 @@ export default function WaterfallPage() {
                   type="text"
                   value={formatCurrency(exitValue).replace("$", "")}
                   onChange={handleInputChange}
-                  className="w-44 text-right font-mono"
+                  className="w-44 text-right nums"
                 />
               </div>
             </div>
@@ -114,8 +116,8 @@ export default function WaterfallPage() {
               step={1_000_000}
             />
             <div className="flex justify-between text-xs text-muted-foreground">
-              <span>$0</span>
-              <span>{formatCurrency(EXIT_VALUE_RANGE.max, true)}</span>
+              <span className="nums">$0</span>
+              <span className="nums">{formatCurrency(EXIT_VALUE_RANGE.max, true)}</span>
             </div>
           </div>
         </CardContent>
@@ -126,7 +128,7 @@ export default function WaterfallPage() {
         <Accordion defaultValue={[]}>
           <AccordionItem value="exit-config" className="border-0">
             <CardHeader className="pb-0">
-              <AccordionTrigger className="text-base font-medium py-0">
+              <AccordionTrigger className="caps-label-sm py-0">
                 Exit Configuration
               </AccordionTrigger>
             </CardHeader>
@@ -288,38 +290,38 @@ export default function WaterfallPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-muted-foreground">Exit Value</div>
-              <div className="text-xl font-bold">
+              <div className="caps-label-sm" style={{ color: "var(--navy-500)" }}>Exit Value</div>
+              <div className="nums" style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}>
                 {formatCurrency(exitValue, true)}
               </div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-muted-foreground">Total Raised</div>
-              <div className="text-xl font-bold">
+              <div className="caps-label-sm" style={{ color: "var(--navy-500)" }}>Total Raised</div>
+              <div className="nums" style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}>
                 {formatCurrency(totalRaised, true)}
               </div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-muted-foreground">
+              <div className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
                 Exit / Raised
               </div>
-              <div className="text-xl font-bold">
+              <div className="nums" style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}>
                 {totalRaised > 0
                   ? formatMultiple(exitValue / totalRaised)
-                  : "—"}
+                  : "\u2014"}
               </div>
             </CardContent>
           </Card>
           <Card>
             <CardContent className="p-4">
-              <div className="text-sm text-muted-foreground">
+              <div className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
                 Founders Receive
               </div>
-              <div className="text-xl font-bold">
+              <div className="nums" style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}>
                 {formatCurrency(
                   waterfallResult.proceeds.find((p) =>
                     p.stakeholder.includes("Founders")
@@ -336,8 +338,8 @@ export default function WaterfallPage() {
       {waterfallResult && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base flex items-center">
-              Proceeds at {formatCurrency(exitValue, true)} Exit
+            <CardTitle className="caps-label-sm flex items-center" style={{ color: "var(--navy-500)" }}>
+              Proceeds at <span className="nums">{formatCurrency(exitValue, true)}</span> Exit
               <InfoTooltip term="MOIC" definition={GLOSSARY["MOIC"]} />
             </CardTitle>
           </CardHeader>
@@ -351,7 +353,7 @@ export default function WaterfallPage() {
       {waterfallRange.length > 0 && (
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-base">
+            <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
               Distribution Across Exit Values
             </CardTitle>
           </CardHeader>

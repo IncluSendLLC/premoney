@@ -141,9 +141,10 @@ export default function ComparePage() {
   if (mainRounds.length === 0) {
     return (
       <div className="max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2">Scenario Comparison</h1>
+        <p className="serif-lead">Compare scenarios</p>
+        <h1 className="caps-label">Scenario Comparison</h1>
         <Card>
-          <CardContent className="py-12 text-center text-muted-foreground">
+          <CardContent className="py-12 text-center" style={{ color: "var(--ink-40)" }}>
             <p className="mb-2">No funding rounds configured yet.</p>
             <p className="text-sm">
               Go to the Rounds page to set up your cap table, then come back
@@ -158,8 +159,9 @@ export default function ComparePage() {
   return (
     <div className="max-w-7xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Scenario Comparison</h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="serif-lead">Compare scenarios</p>
+        <h1 className="caps-label">Scenario Comparison</h1>
+        <p className="mt-1" style={{ color: "var(--ink-60)" }}>
           Compare how different term sheet configurations affect exit outcomes.
           Copy your current rounds into each scenario, then modify the terms.
         </p>
@@ -170,8 +172,9 @@ export default function ComparePage() {
         <CardContent className="p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label className="text-base font-medium">
-                Exit Value: {formatCurrency(comparisonExitValue, true)}
+              <Label className="caps-label-sm">
+                Exit Value:{" "}
+                <span className="nums">{formatCurrency(comparisonExitValue, true)}</span>
               </Label>
             </div>
             <Slider
@@ -191,7 +194,7 @@ export default function ComparePage() {
         <Card>
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base">Scenario A</CardTitle>
+              <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>Scenario A</CardTitle>
               <Button variant="outline" size="sm" onClick={handleCopyToA}>
                 <Copy className="h-3.5 w-3.5 mr-1" />
                 Copy Current Rounds
@@ -200,7 +203,7 @@ export default function ComparePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {!scenarioA ? (
-              <p className="text-sm text-muted-foreground text-center py-6">
+              <p className="text-sm text-center py-6" style={{ color: "var(--ink-40)" }}>
                 Click &quot;Copy Current Rounds&quot; to load your rounds.
               </p>
             ) : (
@@ -269,8 +272,8 @@ export default function ComparePage() {
 
                 {resultA && (
                   <div className="space-y-2 pt-2">
-                    <h4 className="text-sm font-medium">
-                      Proceeds at {formatCurrency(comparisonExitValue, true)}
+                    <h4 className="caps-label-sm">
+                      Proceeds at <span className="nums">{formatCurrency(comparisonExitValue, true)}</span>
                     </h4>
                     {resultA.proceeds.map((p, i) => (
                       <div
@@ -290,11 +293,11 @@ export default function ComparePage() {
                             {p.stakeholder}
                           </span>
                         </div>
-                        <div className="font-mono font-medium">
+                        <div className="nums font-medium">
                           {formatCurrency(p.totalProceeds, true)}
                           {p.investedCapital > 0 && (
-                            <span className="text-muted-foreground ml-1">
-                              ({formatMultiple(p.moic)})
+                            <span className="ml-1" style={{ color: "var(--ink-60)" }}>
+                              (<span className="nums">{formatMultiple(p.moic)}</span>)
                             </span>
                           )}
                         </div>
@@ -311,7 +314,7 @@ export default function ComparePage() {
         <Card>
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base">Scenario B</CardTitle>
+              <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>Scenario B</CardTitle>
               <Button variant="outline" size="sm" onClick={handleCopyToB}>
                 <Copy className="h-3.5 w-3.5 mr-1" />
                 Copy Current Rounds
@@ -320,7 +323,7 @@ export default function ComparePage() {
           </CardHeader>
           <CardContent className="space-y-4">
             {!scenarioB ? (
-              <p className="text-sm text-muted-foreground text-center py-6">
+              <p className="text-sm text-center py-6" style={{ color: "var(--ink-40)" }}>
                 Click &quot;Copy Current Rounds&quot; to load your rounds.
               </p>
             ) : (
@@ -389,8 +392,8 @@ export default function ComparePage() {
 
                 {resultB && (
                   <div className="space-y-2 pt-2">
-                    <h4 className="text-sm font-medium">
-                      Proceeds at {formatCurrency(comparisonExitValue, true)}
+                    <h4 className="caps-label-sm">
+                      Proceeds at <span className="nums">{formatCurrency(comparisonExitValue, true)}</span>
                     </h4>
                     {resultB.proceeds.map((p, i) => {
                       // Calculate diff from scenario A
@@ -424,7 +427,7 @@ export default function ComparePage() {
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
-                            <span className="font-mono font-medium">
+                            <span className="nums font-medium">
                               {formatCurrency(p.totalProceeds, true)}
                             </span>
                             {Math.abs(diffPct) > 0.5 && (

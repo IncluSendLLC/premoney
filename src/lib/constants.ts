@@ -8,24 +8,24 @@ import {
 } from "./engine/types";
 
 export const STAKEHOLDER_COLORS: Record<string, string> = {
-  Founders: "#2563eb",
-  "Option Pool": "#8b5cf6",
-  "Pre-Seed": "#f59e0b",
-  Seed: "#10b981",
-  "Series A": "#ef4444",
-  "Series B": "#ec4899",
-  "Series C": "#06b6d4",
-  "Series D+": "#f97316",
-  Note: "#84cc16",
-  SAFE: "#a3e635",
+  Founders: "#1F3A52",
+  "Option Pool": "#C8B485",
+  "Pre-Seed": "#859FAF",
+  Seed: "#4F7A92",
+  "Series A": "#D9FF67",
+  "Series B": "#708060",
+  "Series C": "#2B4F6B",
+  "Series D+": "#9EB1BF",
+  Note: "#BFB4A2",
+  SAFE: "#BFB4A2",
 };
 
 export function getStakeholderColor(stakeholder: string): string {
   for (const [key, color] of Object.entries(STAKEHOLDER_COLORS)) {
     if (stakeholder.includes(key)) return color;
   }
-  // Fallback colors
-  const fallback = ["#64748b", "#0ea5e9", "#a855f7", "#14b8a6", "#f43f5e"];
+  // Fallback colors (navy family)
+  const fallback = ["#5C7589", "#2B4F6B", "#9EB1BF", "#C8B485", "#708060"];
   const hash = stakeholder.split("").reduce((acc, c) => acc + c.charCodeAt(0), 0);
   return fallback[hash % fallback.length];
 }

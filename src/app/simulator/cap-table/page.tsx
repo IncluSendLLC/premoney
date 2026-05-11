@@ -22,12 +22,19 @@ export default function CapTablePage() {
 
   if (rounds.length === 0) {
     return (
-      <div className="max-w-4xl">
-        <h1 className="text-2xl font-bold mb-2">Cap Table</h1>
+      <div className="max-w-6xl">
+        <div>
+          <p className="serif-lead mb-2">
+            <em>the allocation of</em>
+          </p>
+          <h1 className="caps-label" style={{ fontSize: "12px", marginBottom: "8px" }}>
+            Cap Table
+          </h1>
+        </div>
         <Card>
-          <CardContent className="py-12 text-center text-muted-foreground">
+          <CardContent className="py-12 text-center" style={{ color: "var(--ink-60)" }}>
             <p className="mb-2">No funding rounds configured yet.</p>
-            <p className="text-sm">
+            <p style={{ fontSize: "13px", lineHeight: 1.55 }}>
               Go to the Rounds page to add funding rounds, then return here to
               see the cap table.
             </p>
@@ -40,8 +47,13 @@ export default function CapTablePage() {
   return (
     <div className="max-w-6xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Cap Table</h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="serif-lead mb-2">
+          <em>the allocation of</em>
+        </p>
+        <h1 className="caps-label" style={{ fontSize: "12px", marginBottom: "8px" }}>
+          Cap Table
+        </h1>
+        <p style={{ fontSize: "14px", color: "var(--ink-60)", lineHeight: 1.55 }}>
           View ownership breakdown after each funding round.
         </p>
       </div>
@@ -66,28 +78,39 @@ export default function CapTablePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-muted-foreground">Post-Money</div>
-                <div className="text-xl font-bold">
+                <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
+                  Post-Money
+                </div>
+                <div
+                  className="nums"
+                  style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}
+                >
                   {formatCurrency(activeSnapshot.postMoneyValuation, true)}
                 </div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-muted-foreground">
+                <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
                   Price/Share
                 </div>
-                <div className="text-xl font-bold">
+                <div
+                  className="nums"
+                  style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}
+                >
                   ${activeSnapshot.pricePerShare.toFixed(4)}
                 </div>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-muted-foreground">
+                <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
                   Option Pool
                 </div>
-                <div className="text-xl font-bold">
+                <div
+                  className="nums"
+                  style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}
+                >
                   {formatPercent(
                     activeSnapshot.optionPool.poolPercentOfFullyDiluted,
                     1
@@ -97,10 +120,13 @@ export default function CapTablePage() {
             </Card>
             <Card>
               <CardContent className="p-4">
-                <div className="text-sm text-muted-foreground">
+                <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
                   Total Raised
                 </div>
-                <div className="text-xl font-bold">
+                <div
+                  className="nums"
+                  style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}
+                >
                   {formatCurrency(
                     activeSnapshot.entries.reduce(
                       (sum, e) => sum + e.investedCapital,
@@ -117,7 +143,9 @@ export default function CapTablePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card>
               <CardHeader className="pb-2">
-                <CardTitle className="text-base">Ownership Breakdown</CardTitle>
+                <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
+                  Ownership Breakdown
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <CapTableChart entries={activeSnapshot.entries} />
@@ -127,7 +155,7 @@ export default function CapTablePage() {
             {snapshots.length > 1 && (
               <Card>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-base">
+                  <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
                     Dilution Over Time
                   </CardTitle>
                 </CardHeader>
@@ -141,7 +169,9 @@ export default function CapTablePage() {
           {/* Detailed Table */}
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-base">Detailed Ownership</CardTitle>
+              <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
+                Detailed Ownership
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <CapTableGrid snapshot={activeSnapshot} />
