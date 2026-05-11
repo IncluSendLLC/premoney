@@ -16,6 +16,7 @@ import {
   formatShares,
 } from "@/lib/formatters";
 import { getStakeholderColor } from "@/lib/constants";
+import { GlossaryTerm } from "@/components/shared/glossary-term";
 
 interface CapTableGridProps {
   snapshot: CapTableSnapshot;
@@ -28,9 +29,9 @@ export function CapTableGrid({ snapshot }: CapTableGridProps) {
         <TableRow>
           <TableHead>Stakeholder</TableHead>
           <TableHead className="text-right">Shares</TableHead>
-          <TableHead className="text-right">Ownership %</TableHead>
+          <TableHead className="text-right"><GlossaryTerm term="Fully Diluted">Ownership %</GlossaryTerm></TableHead>
           <TableHead className="text-right">Invested</TableHead>
-          <TableHead className="text-right">Price/Share</TableHead>
+          <TableHead className="text-right"><GlossaryTerm term="Price Per Share">Price/Share</GlossaryTerm></TableHead>
           <TableHead>Type</TableHead>
         </TableRow>
       </TableHeader>

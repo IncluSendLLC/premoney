@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import { WaterfallResult } from "@/lib/engine/types";
 import { formatCurrency, formatMultiple } from "@/lib/formatters";
 import { getStakeholderColor } from "@/lib/constants";
+import { GlossaryTerm } from "@/components/shared/glossary-term";
 
 interface WaterfallTableProps {
   result: WaterfallResult;
@@ -32,7 +33,7 @@ export function WaterfallTable({ result }: WaterfallTableProps) {
           </div>
           {result.transactionCosts > 0 && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Transaction Costs</span>
+              <span className="text-muted-foreground"><GlossaryTerm term="Transaction Costs">Transaction Costs</GlossaryTerm></span>
               <span className="font-mono text-destructive">
                 -{formatCurrency(result.transactionCosts, true)}
               </span>
@@ -40,7 +41,7 @@ export function WaterfallTable({ result }: WaterfallTableProps) {
           )}
           {result.escrowHoldback > 0 && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Escrow Holdback</span>
+              <span className="text-muted-foreground"><GlossaryTerm term="Escrow">Escrow Holdback</GlossaryTerm></span>
               <span className="font-mono text-destructive">
                 -{formatCurrency(result.escrowHoldback, true)}
               </span>
@@ -48,7 +49,7 @@ export function WaterfallTable({ result }: WaterfallTableProps) {
           )}
           {hasCarveout && (
             <div className="flex justify-between">
-              <span className="text-muted-foreground">Management Carve-Out</span>
+              <span className="text-muted-foreground"><GlossaryTerm term="Management Carve-Out">Management Carve-Out</GlossaryTerm></span>
               <span className="font-mono">
                 {formatCurrency(result.managementCarveout, true)}
               </span>
@@ -66,17 +67,17 @@ export function WaterfallTable({ result }: WaterfallTableProps) {
           <TableRow>
             <TableHead>Stakeholder</TableHead>
             <TableHead className="text-right">Invested</TableHead>
-            <TableHead className="text-right">Preference</TableHead>
+            <TableHead className="text-right"><GlossaryTerm term="Liquidation Preference">Preference</GlossaryTerm></TableHead>
             {hasDividends && (
-              <TableHead className="text-right">Dividends</TableHead>
+              <TableHead className="text-right"><GlossaryTerm term="Dividends">Dividends</GlossaryTerm></TableHead>
             )}
-            <TableHead className="text-right">Participation</TableHead>
-            <TableHead className="text-right">Conversion</TableHead>
+            <TableHead className="text-right"><GlossaryTerm term="Participating Preferred">Participation</GlossaryTerm></TableHead>
+            <TableHead className="text-right"><GlossaryTerm term="Conversion">Conversion</GlossaryTerm></TableHead>
             {hasCarveout && (
-              <TableHead className="text-right">Carve-Out</TableHead>
+              <TableHead className="text-right"><GlossaryTerm term="Management Carve-Out">Carve-Out</GlossaryTerm></TableHead>
             )}
             <TableHead className="text-right">Total Proceeds</TableHead>
-            <TableHead className="text-right">MOIC</TableHead>
+            <TableHead className="text-right"><GlossaryTerm term="MOIC">MOIC</GlossaryTerm></TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>

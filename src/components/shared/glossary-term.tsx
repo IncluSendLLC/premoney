@@ -1,32 +1,37 @@
 "use client";
 
-import { Info } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { GLOSSARY } from "@/lib/constants";
 import { useGlossary } from "./glossary-provider";
 
-interface InfoTooltipProps {
+interface GlossaryTermProps {
+  /** The key in the GLOSSARY object */
   term: string;
-  definition: string;
+  /** Display text (defaults to term) */
+  children?: React.ReactNode;
 }
 
-export function InfoTooltip({ term, definition }: InfoTooltipProps) {
+export function GlossaryTerm({ term, children }: GlossaryTermProps) {
   const { openTerm } = useGlossary();
+  const definition = GLOSSARY[term];
+
+  if (!definition) return <>{children || term}</>;
 
   return (
     <Tooltip>
       <TooltipTrigger
-        className="inline-flex items-center justify-center rounded-full text-muted-foreground hover:text-foreground transition-colors ml-1"
-        aria-label={`Learn about ${term}`}
+        className="glossary-term"
         onClick={(e) => {
           e.preventDefault();
           openTerm(term);
         }}
+        render={<button type="button" />}
       >
-        <Info className="h-3.5 w-3.5" />
+        {children || term}
       </TooltipTrigger>
       <TooltipContent
         side="top"
@@ -47,7 +52,9 @@ export function InfoTooltip({ term, definition }: InfoTooltipProps) {
           {term}
         </p>
         <p style={{ fontSize: "12.5px", lineHeight: 1.5, color: "var(--ink-60)" }}>
-          {definition}
+          {definition.length > 120
+            ? definition.slice(0, 120).trim() + "..."
+            : definition}
         </p>
         <p
           style={{

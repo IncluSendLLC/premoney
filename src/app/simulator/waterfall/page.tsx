@@ -23,6 +23,7 @@ import { useWaterfall } from "@/hooks/use-waterfall";
 import { WaterfallChart } from "@/components/waterfall/waterfall-chart";
 import { WaterfallTable } from "@/components/waterfall/waterfall-table";
 import { InfoTooltip } from "@/components/shared/info-tooltip";
+import { GlossaryTerm } from "@/components/shared/glossary-term";
 import { CurrencyInput } from "@/components/shared/currency-input";
 import { formatCurrency, formatMultiple } from "@/lib/formatters";
 import { GLOSSARY, EXIT_VALUE_RANGE } from "@/lib/constants";
@@ -307,7 +308,7 @@ export default function WaterfallPage() {
           <Card>
             <CardContent className="p-4">
               <div className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
-                Exit / Raised
+                <GlossaryTerm term="MOIC">Exit / Raised</GlossaryTerm>
               </div>
               <div className="nums" style={{ fontWeight: 500, fontSize: "32px", letterSpacing: "-0.02em", fontVariantNumeric: "tabular-nums" }}>
                 {totalRaised > 0

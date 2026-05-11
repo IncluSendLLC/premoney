@@ -84,10 +84,10 @@
   --ink-10: rgba(21, 41, 59, 0.10);
   --ink-06: rgba(21, 41, 59, 0.06);
 
-  /* ---- Accent — conifer green (one moment per region) ---- */
-  --pm-accent: #D9FF67;
-  --accent-deep: #B8E03A;
-  --accent-soft: #EEFFB8;
+  /* ---- Accent — copper-gold (one moment per region) ---- */
+  --pm-accent: #E09F3E;
+  --accent-deep: #B87D20;
+  --accent-soft: #FBF0DC;
 
   /* ---- Chart palette ---- */
   --c-founder: #1F3A52;
@@ -95,7 +95,7 @@
   --c-esop: #C8B485;
   --c-preseed: #859FAF;
   --c-seed: #4F7A92;
-  --c-seriesA: #D9FF67;
+  --c-seriesA: #E09F3E;
   --c-seriesB: #708060;
   --c-other: #BFB4A2;
 
@@ -141,7 +141,7 @@
   --chart-2: #4F7A92;
   --chart-3: #C8B485;
   --chart-4: #859FAF;
-  --chart-5: #D9FF67;
+  --chart-5: #E09F3E;
 
   --sidebar: #FFFFFF;
   --sidebar-foreground: #15293B;
@@ -228,6 +228,30 @@
   .nums {
     font-variant-numeric: tabular-nums;
     font-feature-settings: "tnum";
+  }
+
+  /* Glossary interactive term */
+  .glossary-term {
+    text-decoration: underline dotted;
+    text-decoration-color: var(--ink-20);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    cursor: help;
+    transition: text-decoration-color 160ms var(--ease);
+    /* Inherit all text styles from parent */
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    line-height: inherit;
+  }
+
+  .glossary-term:hover {
+    text-decoration-color: var(--accent-deep);
   }
 }
 

@@ -12,7 +12,7 @@ export const STAKEHOLDER_COLORS: Record<string, string> = {
   "Option Pool": "#C8B485",
   "Pre-Seed": "#859FAF",
   Seed: "#4F7A92",
-  "Series A": "#D9FF67",
+  "Series A": "#E09F3E",
   "Series B": "#708060",
   "Series C": "#2B4F6B",
   "Series D+": "#9EB1BF",

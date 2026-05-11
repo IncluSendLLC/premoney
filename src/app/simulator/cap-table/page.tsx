@@ -9,6 +9,7 @@ import { CapTableChart } from "@/components/cap-table/cap-table-chart";
 import { DilutionTimeline } from "@/components/cap-table/dilution-timeline";
 import { CapTableGrid } from "@/components/cap-table/cap-table-grid";
 import { formatCurrency, formatPercent } from "@/lib/formatters";
+import { GlossaryTerm } from "@/components/shared/glossary-term";
 
 export default function CapTablePage() {
   const rounds = useSimulatorStore((s) => s.rounds);
@@ -79,7 +80,7 @@ export default function CapTablePage() {
             <Card>
               <CardContent className="p-4">
                 <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
-                  Post-Money
+                  <GlossaryTerm term="Post-Money Valuation">Post-Money</GlossaryTerm>
                 </div>
                 <div
                   className="nums"
@@ -92,7 +93,7 @@ export default function CapTablePage() {
             <Card>
               <CardContent className="p-4">
                 <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
-                  Price/Share
+                  <GlossaryTerm term="Price Per Share">Price/Share</GlossaryTerm>
                 </div>
                 <div
                   className="nums"
@@ -105,7 +106,7 @@ export default function CapTablePage() {
             <Card>
               <CardContent className="p-4">
                 <div className="caps-label-sm" style={{ color: "var(--navy-500)", marginBottom: "4px" }}>
-                  Option Pool
+                  <GlossaryTerm term="Option Pool">Option Pool</GlossaryTerm>
                 </div>
                 <div
                   className="nums"
@@ -144,7 +145,7 @@ export default function CapTablePage() {
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
-                  Ownership Breakdown
+                  <GlossaryTerm term="Fully Diluted">Ownership Breakdown</GlossaryTerm>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -156,7 +157,7 @@ export default function CapTablePage() {
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="caps-label-sm" style={{ color: "var(--navy-500)" }}>
-                    Dilution Over Time
+                    <GlossaryTerm term="Anti-Dilution">Dilution Over Time</GlossaryTerm>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

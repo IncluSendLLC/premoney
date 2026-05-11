@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Copy } from "lucide-react";
+import { GlossaryTerm } from "@/components/shared/glossary-term";
 import { useSimulatorStore } from "@/lib/store/simulator-store";
 import { useScenarioStore } from "@/lib/store/scenario-store";
 import type { ScenarioData } from "@/lib/store/scenario-store";
@@ -221,7 +222,7 @@ export default function ComparePage() {
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <Label className="text-xs">Liq. Multiple</Label>
+                        <Label className="text-xs"><GlossaryTerm term="Liquidation Preference">Liq. Multiple</GlossaryTerm></Label>
                         <Select
                           value={round.terms.liquidationMultiple.toString()}
                           onValueChange={(v) =>
@@ -245,7 +246,7 @@ export default function ComparePage() {
                         </Select>
                       </div>
                       <div>
-                        <Label className="text-xs">Type</Label>
+                        <Label className="text-xs"><GlossaryTerm term="Non-Participating Preferred">Type</GlossaryTerm></Label>
                         <Select
                           value={round.terms.liquidationType}
                           onValueChange={(v) =>
@@ -341,7 +342,7 @@ export default function ComparePage() {
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div>
-                        <Label className="text-xs">Liq. Multiple</Label>
+                        <Label className="text-xs"><GlossaryTerm term="Liquidation Preference">Liq. Multiple</GlossaryTerm></Label>
                         <Select
                           value={round.terms.liquidationMultiple.toString()}
                           onValueChange={(v) =>
@@ -365,7 +366,7 @@ export default function ComparePage() {
                         </Select>
                       </div>
                       <div>
-                        <Label className="text-xs">Type</Label>
+                        <Label className="text-xs"><GlossaryTerm term="Non-Participating Preferred">Type</GlossaryTerm></Label>
                         <Select
                           value={round.terms.liquidationType}
                           onValueChange={(v) =>
